@@ -11,6 +11,7 @@ const app = async (yargsObject) => {
             console.log(await readMovie())
         }
         else if (yargsObject.read){
+            console.log(await readMovie({[yargsObject.key] : yargsObject.value}))
 
         }
         else if (yargsObject.update){
