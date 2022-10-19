@@ -1,12 +1,14 @@
 const yargs = require("yargs")
 const {sequelize} = require("./db/connection")
+const {createMovie, readMovie} = require("./movie/movieFunction")
 
 const app = async (yargsObject) => {
     try {
         await sequelize.sync()
 
         if (yargsObject.create){
-
+            await createMovie({title: yargsObject.title, actor: yargsObject.actor})
+            console.log(await readMovie())
         }
         else if (yargsObject.read){
 
