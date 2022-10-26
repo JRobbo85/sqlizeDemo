@@ -8,11 +8,33 @@ const app = async (yargsObject) => {
 
         if (yargsObject.create){
             await createMovie({title: yargsObject.title, actor: yargsObject.actor})
-            console.log(await readMovie())
+            let output = {}
+            let table = await readMovie()
+            for (let movie of table){
+                output.id = movie.id
+                output.title = movie.title
+                output.actor = movie.actorconsole.log(output)
+            }
         }
         else if (yargsObject.read){
             console.log(await readMovie({[yargsObject.key] : yargsObject.value}))
-
+            let output = {}
+            let table = await readMovie()
+            for (let movie of table){
+                output.id = movie.id
+                output.title = movie.title
+                output.actor = movie.actorconsole.log(output)
+            }
+        }
+        else if (yargsObject.readAll){
+            console.log(await readMovie())
+            let output = {}
+            let table = await readMovie()
+            for (let movie of table){
+                output.id = movie.id
+                output.title = movie.title
+                output.actor = movie.actorconsole.log(output)
+            }
         }
         else if (yargsObject.update){
 
